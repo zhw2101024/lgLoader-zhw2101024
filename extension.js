@@ -2,6 +2,8 @@ const Main = imports.ui.main;
 
 const Extension = Main.ExtensionSystem.ExtensionUtils.getCurrentExtension();
 const lgLoader = Extension.imports.lgLoader;
+const debug = Extension.imports.debug;
+let debugobj = new debug.Debug();
 
 function init() {
 }
@@ -15,6 +17,8 @@ function enable() {
 
 function disable() {
     let lgLoaderobj = Main.panel.statusArea.lgLoader;
-    lgLoaderobj.centerBox.destroy();
+    if(titleBox = Main.lookingGlass.titleBox.destroy()) {
+      titleBox.destroy();
+    }
     lgLoaderobj.destroy();
 }

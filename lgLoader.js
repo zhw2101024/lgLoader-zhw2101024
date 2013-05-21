@@ -10,7 +10,7 @@ const lgLoaderButton = new Lang.Class({
 
     _init: function() {
         this.parent();
-        this._label = new St.Button({label: "lookingGlass"});
+        this._label = new St.Button({name: "testButton", label: "lookingGlass"});
         this.actor.add_actor(this._label);
         this._createLookingGlass();
         this._label.connect('button-press-event', Lang.bind(this, this._buttonEvent));
@@ -23,12 +23,26 @@ const lgLoaderButton = new Lang.Class({
         let lookingGlass = Main.lookingGlass;
         let toolbar = lookingGlass.actor.get_first_child();
         let centerArea = toolbar.get_child_at_index(1);
-        this.centerBox = new St.BoxLayout({ style_class: 'labels' });
-        let clearBtn = new St.Button({label:"clear"});
-        clearBtn.connect("button-press-event", Lang.bind(this, this._clearEvent));
-        clearBtn._lookingGlass = lookingGlass;
-        this.centerBox.add_actor(clearBtn, { expand: true });
-        centerArea.add_actor(this.centerBox);
+        if(centerArea.get_children().length == 0) {
+            lookingGlass.titleBox = new St.BoxLayout({ name:"titleBox" });
+
+            let clearBtn = new St.Button({label:"clear", style_class: "cmdButton"});
+            clearBtn.connect("button-press-event", Lang.bind(this, this._clearEvent));
+            clearBtn._lookingGlass = lookingGlass;
+            lookingGlass.titleBox.add(clearBtn, { x_align: St.Align.START, expand: false });
+
+	    let spacing = new St.DrawingArea();
+            lookingGlass.titleBox.add(spacing, { x_align: St.Align.MIDDLE, expand: true });
+
+            let restartBtn = new St.Button({label:"restart", style_class: "cmdButton"});
+            restartBtn.connect("button-press-event", Lang.bind(this, function() {
+                global.reexec_self();
+            }));
+            lookingGlass.titleBox.add(restartBtn, { x_align: St.Align.END, expand: false });
+
+            centerArea.x_fill = true;
+            centerArea.add_actor(lookingGlass.titleBox);
+        }
     },
 
     _buttonEvent: function() {

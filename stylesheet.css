@@ -5,3 +5,22 @@
     background-color:green;
 }
 
+#testButton {
+    color : yellow;
+}
+
+#testButton:hover {
+    color : #EFEF55;
+}
+
+#titleBox {
+    padding : 0 1em;
+}
+
+#titleBox .cmdButton {
+    font-weight : bold;
+    color : yellow;
+}
+#titleBox .cmdButton:hover {
+    color : #EFEF55;
+}

@@ -3,19 +3,22 @@
  * note that the message area cannot be clear until you restart the shell.
  */
 const St = imports.gi.St;
+const Lang = imports.lang;
 const Main = imports.ui.main;
 
-var test = new St.Button({style_class:'debug-text',can_focus: true});
-test.set_position(100,200);
-test.hide();
-test.connect("button-press-event", _test);
-Main.uiGroup.add_actor(test);
+const Debug = new Lang.Class({
+    Name: "Debug",
 
-function _test() {
-  test.hide();
-}
-
-function debug(text) {
-  test.label = text;
-  test.show();
-}
+    _init: function() {
+        let test = new St.Label({ style_class:'debug-text' });
+        this.label = test;
+        test.set_position(100,200);
+        test.hide();
+        Main.uiGroup.add_actor(test);
+    },
+    
+    show: function(text) {
+      this.label.text = text;
+      this.label.show();
+    }
+});
