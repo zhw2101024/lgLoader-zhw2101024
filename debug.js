@@ -18,7 +18,7 @@ const Debug = new Lang.Class({
     },
     
     show: function(text) {
-      this.label.text = text;
+      this.label.text = this.label.text + text.toString() + "\n";
       this.label.show();
     }
 });

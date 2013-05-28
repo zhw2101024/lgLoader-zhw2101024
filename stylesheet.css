@@ -5,11 +5,11 @@
     background-color:green;
 }
 
-#testButton {
+#lookingGlass {
     color : yellow;
 }
 
-#testButton:hover {
+#lookingGlass:hover {
     color : #EFEF55;
 }
 
