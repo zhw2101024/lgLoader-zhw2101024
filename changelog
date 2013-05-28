@@ -1,0 +1,4 @@
+ 2013-05-28
+ - add hot keys and fixed a bug when navigating among panel buttons
+ - add buttons to restart gnome-shell
+ - split the extension into individual files and remove some useless code
