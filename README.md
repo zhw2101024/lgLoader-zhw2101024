@@ -14,6 +14,6 @@ What can lgLoader do exactly?
 
 last but not least
 ======================
-I wrote this extension because I want something like firebug in gnome-shell. I'm a web developer and have used firebug for years, and it never disappointed me.
-You may laugh at me, but it will be better if we do this work together. The comments and code are written carefully as far as I can. If you know javascript, I hope you can look into the source code and tell me what you think about that. I will treat document error as bugs.
-Now I host this extension on github at <https://github.com/zhw2101024/lgLoader-zhw2101024>, welcome to join this project, either write wiki or create new issues.
+* I wrote this extension because I want something like firebug in gnome-shell. I'm a web developer and have used firebug for years, and it never disappointed me.
+* You may laugh at me, but it will be better if we do this work together. The comments and code are written carefully as far as I can. If you know javascript, I hope you can look into the source code and tell me what you think about that. I will treat document error as bugs.
+* Now I host this extension on github at <https://github.com/zhw2101024/lgLoader-zhw2101024>, welcome to join this project, either write wiki or create new issues.
