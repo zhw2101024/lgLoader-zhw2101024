@@ -141,6 +141,9 @@ const lgLoaderButton = new Lang.Class({
               case 'Windows':
                   lookingGlass._windowList.actor.destroy_all_children();
                   break;
+              case 'Errors':
+                  lookingGlass._errorLog.actor.destroy_all_children();
+                  break;
               case 'Memory':
                   lookingGlass._memory.actor.destroy_all_children();
                   break;
