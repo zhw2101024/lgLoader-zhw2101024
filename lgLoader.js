@@ -58,7 +58,7 @@ const lgLoaderButton = new Lang.Class({
           /*
            * For same reason as above, we check if lookingGlass if modified before.
            */
-          if(centerArea.get_children().length == 0) {
+          if(0 == centerArea.get_children().length) {
               lookingGlass.titleBox = new St.BoxLayout({ name:"titleBox" });
 
               let clearBtn = new St.Button({label:"clear", style_class: "cmdButton"});
@@ -85,9 +85,15 @@ const lgLoaderButton = new Lang.Class({
        * right-click to restart then gnome session
        */
       _buttonPressEvent: function(actor, event) {
-          if(event.get_button() == 3) {
+          if(3 == event.get_button()) {
             global.reexec_self();
             return true;
+          }
+          /*
+           * in case lookingGlass is accidently destroyed
+           */
+          if(null == Main.lookingGlass) {
+            this._createLookingGlass();
           }
           Main.lookingGlass.toggle();
           return true;
@@ -97,11 +103,14 @@ const lgLoaderButton = new Lang.Class({
        * triggered when pressing keys on lgLoader button
        */
       _buttonCapturedEvent: function(actor, event) {
-          if(event.type() == Clutter.EventType.KEY_PRESS) {
+          if(Clutter.EventType.KEY_PRESS == event.type()) {
+              if(null == Main.lookingGlass) {
+                this._createLookingGlass();
+              }
               let symbol = event.get_key_symbol();
-              if((symbol == Clutter.KEY_space) || (symbol == Clutter.KEY_Return)) {
+              if((Clutter.KEY_space == symbol) || (Clutter.KEY_Return == symbol)) {
                   Main.lookingGlass.toggle();
-              } else if(symbol == Clutter.KEY_Down) {
+              } else if(Clutter.KEY_Down == symbol) {
                   Main.lookingGlass.open();
               }
           }
@@ -112,7 +121,7 @@ const lgLoaderButton = new Lang.Class({
        * triggered when window of lookingGlass is clicked
        */
       _lgPreventCloseEvent: function(actor, event) {
-          if(event.type() == Clutter.EventType.BUTTON_PRESS) {
+          if(Clutter.EventType.BUTTON_PRESS == event.type()) {
               return true;
           }
       },

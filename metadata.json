@@ -1,9 +1,11 @@
 {
   "shell-version": [
-    "3.8.2"
+    "3.8",
+    "3.6",
+    "3.4"
   ],
   "uuid": "lgLoader@zhw2101024",
   "name": "lgLoader",
   "url": "https://github.com/zhw2101024/lgLoader-zhw2101024",
-  "description": "help to load lookingGlass"
+  "description": "help to easify gnome-shell extension development, please read README.md file in ~/.local/share/gnome-shell/extensions/"
 }
