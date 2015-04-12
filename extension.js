@@ -138,7 +138,6 @@ function enable() {
         Main.panel._addToPanelBox(lgname,indicator,1,Main.panel._centerBox);
     }
     panelEvents.push(Main.panel.actor.connect("button-press-event", _lgCloseEvent));
-    globalEvents.push(global.stage.connect("button-press-event", _lgCloseEvent));
     globalEvents.push(global.stage.connect("captured-event", _globalCapturedEvent));
 }
 
